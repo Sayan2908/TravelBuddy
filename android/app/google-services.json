@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "8666627281",
+    "project_id": "travel-buddy-dcb30",
+    "storage_bucket": "travel-buddy-dcb30.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:8666627281:android:480f5b801b7ef8a85819f0",
+        "android_client_info": {
+          "package_name": "com.example.travel_checklist"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA9TfNvR-Q6velronqqUDkQmOIX-u4Cxpw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
