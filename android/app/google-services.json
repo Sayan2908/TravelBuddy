@@ -12,7 +12,20 @@
           "package_name": "com.example.travel_checklist"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "8666627281-fdagnjceqhqgmhf7h3r9jno0146snfvc.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.travel_checklist",
+            "certificate_hash": "f91b455915a50a379a7415658159bb9536b63907"
+          }
+        },
+        {
+          "client_id": "8666627281-4bcv31lqtjjfs9u36kuqhv48o3gulv86.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyA9TfNvR-Q6velronqqUDkQmOIX-u4Cxpw"
@@ -20,7 +33,19 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "8666627281-4bcv31lqtjjfs9u36kuqhv48o3gulv86.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "8666627281-errctq2c7jaa8jeqep4j78vt860qcla0.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.travelChecklist.RunnerTests"
+              }
+            }
+          ]
         }
       }
     }

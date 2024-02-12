@@ -66,6 +66,8 @@ class DefaultFirebaseOptions {
     messagingSenderId: '8666627281',
     projectId: 'travel-buddy-dcb30',
     storageBucket: 'travel-buddy-dcb30.appspot.com',
+    androidClientId: '8666627281-fdagnjceqhqgmhf7h3r9jno0146snfvc.apps.googleusercontent.com',
+    iosClientId: '8666627281-v8e7nu73aulluhrkchnrch8gmjna1mhm.apps.googleusercontent.com',
     iosBundleId: 'com.example.travelChecklist',
   );
 
@@ -75,6 +77,8 @@ class DefaultFirebaseOptions {
     messagingSenderId: '8666627281',
     projectId: 'travel-buddy-dcb30',
     storageBucket: 'travel-buddy-dcb30.appspot.com',
+    androidClientId: '8666627281-fdagnjceqhqgmhf7h3r9jno0146snfvc.apps.googleusercontent.com',
+    iosClientId: '8666627281-errctq2c7jaa8jeqep4j78vt860qcla0.apps.googleusercontent.com',
     iosBundleId: 'com.example.travelChecklist.RunnerTests',
   );
 }

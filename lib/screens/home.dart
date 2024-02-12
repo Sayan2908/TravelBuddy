@@ -3,6 +3,8 @@ import 'package:hive_flutter/hive_flutter.dart';
 import '../data/database.dart';
 import '../util/checklist_tile.dart';
 import '../util/dialog_box.dart';
+import 'shared_page.dart'; // Import the shared page
+import 'account_page.dart'; // Import the account page
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -16,9 +18,11 @@ class _HomePageState extends State<HomePage> {
   final _myBox = Hive.box('checklist');
   ToDoDataBase db = ToDoDataBase();
 
+  int _selectedIndex = 0;
+
   @override
   void initState() {
-    // if this is the 1st time ever openin the app, then create default data
+    // if this is the 1st time ever opening the app, then create default data
     if (_myBox.get("CHECKLIST") == null) {
       db.createInitialData();
     } else {
@@ -74,6 +78,7 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -90,7 +95,8 @@ class _HomePageState extends State<HomePage> {
         onPressed: createNewTask,
         child: Icon(Icons.add),
       ),
-      body: ListView.builder(
+      body: _selectedIndex == 0
+          ? ListView.builder(
         itemCount: db.toDoList.length,
         itemBuilder: (context, index) {
           return ChecklistTile(
@@ -100,6 +106,44 @@ class _HomePageState extends State<HomePage> {
             deleteFunction: (context) => deleteTask(index),
           );
         },
+      )
+          : _selectedIndex == 1
+          ? SharedPage()
+          : AccountPage(),
+      bottomNavigationBar: BottomAppBar(
+        color: Colors.orangeAccent,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            IconButton(
+              onPressed: () {
+                setState(() {
+                  _selectedIndex = 0;
+                });
+              },
+              icon: Icon(Icons.home_filled,
+                  color: _selectedIndex == 0 ? Colors.white : Colors.grey),
+            ),
+            IconButton(
+              onPressed: () {
+                setState(() {
+                  _selectedIndex = 1;
+                });
+              },
+              icon: Icon(Icons.share_location_outlined,
+                  color: _selectedIndex == 1 ? Colors.white : Colors.grey),
+            ),
+            IconButton(
+              onPressed: () {
+                setState(() {
+                  _selectedIndex = 2;
+                });
+              },
+              icon: Icon(Icons.account_circle,
+                  color: _selectedIndex == 2 ? Colors.white : Colors.grey),
+            ),
+          ],
+        ),
       ),
     );
   }
