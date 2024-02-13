@@ -45,6 +45,7 @@ dependencies:
   firebase_storage:
   google_sign_in:
   cached_network_image: ^3.0.0
+  font_awesome_flutter:
 
 dev_dependencies:
   flutter_test:

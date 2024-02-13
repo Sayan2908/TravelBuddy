@@ -6,14 +6,16 @@ class ChecklistTile extends StatelessWidget {
   final bool taskCompleted;
   Function(bool?)? onChanged;
   Function(BuildContext)? deleteFunction;
+  Function(BuildContext)? editFunction;
 
   ChecklistTile({
-    super.key,
+    Key? key,
     required this.taskName,
     required this.taskCompleted,
     required this.onChanged,
     required this.deleteFunction,
-  });
+    required this.editFunction,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +37,7 @@ class ChecklistTile extends StatelessWidget {
           motion: StretchMotion(),
           children: [
             SlidableAction(
-              onPressed: deleteFunction,
+              onPressed: editFunction,
               backgroundColor: Colors.lightBlueAccent,
               icon: Icons.edit,
               borderRadius: BorderRadius.circular(40),
@@ -75,6 +77,42 @@ class ChecklistTile extends StatelessWidget {
           ),
         ),
       ),
+    );
+  }
+
+  void _showEditTaskDialog(BuildContext context) {
+    TextEditingController controller = TextEditingController(text: taskName);
+    showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: Text('Edit Task'),
+          content: TextField(
+            controller: controller,
+            decoration: InputDecoration(
+              hintText: 'Enter task name',
+            ),
+          ),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              child: Text('Cancel'),
+            ),
+            TextButton(
+              onPressed: () {
+                String editedTaskName = controller.text.trim();
+                if (editedTaskName.isNotEmpty) {
+                  editFunction?.call(context);
+                  Navigator.pop(context);
+                }
+              },
+              child: Text('Save'),
+            ),
+          ],
+        );
+      },
     );
   }
 }

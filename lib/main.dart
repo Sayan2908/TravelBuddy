@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
@@ -17,22 +18,26 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   ); // Initialize Firebase
-  runApp(const MyApp());
+  FirebaseAuth.instance.authStateChanges().listen((User? user) {
+    runApp(MyApp(user: user));
+  });
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  final User? user;
+  const MyApp({Key? key, this.user}) : super(key: key);
 
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
+      initialRoute: user != null ? '/home' : '/',
       routes: {
         '/': (context) => AuthPage(), // Default route
-        '/home': (context) => HomePage(), // Route for home page
+        '/home': (context) => MainScreen(), // Route for home page
         '/shared': (context) => SharedPage(),
-        '/account': (context) => AccountPage()
+        '/account': (context) => AccountPage(),
       },
     );
   }

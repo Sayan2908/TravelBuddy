@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:travel_checklist/screens/home.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class AuthPage extends StatefulWidget {
   const AuthPage({Key? key}) : super(key: key);
@@ -34,7 +35,7 @@ class _AuthPageState extends State<AuthPage> {
         child: Column(
           children: [
             SizedBox(
-              height: 24,
+              height: 64,
             ),
             Text(
               'Welcome to TravelBuddy',
@@ -66,13 +67,13 @@ class _AuthPageState extends State<AuthPage> {
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(16)),
                       child: Padding(
-                        padding: const EdgeInsets.all(16.0),
-                        child: Image.asset('google.png'),
+                        padding: const EdgeInsets.all(32.0),
+                        child: FaIcon(FontAwesomeIcons.google),
                       ),
                     ),
                   ),
                   SizedBox(
-                    height: 24,
+                    height: 64,
                   ),
                   InkWell(
                     onTap: () => Navigator.pushNamed(context, "/home"),
